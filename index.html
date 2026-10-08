@@ -65,9 +65,9 @@
   <div class="layout">
     <section class="panel gauge-panel" aria-labelledby="gauge-heading">
       <div class="panel-top"><span class="panel-kicker" id="gauge-heading">Current reading</span><time class="date" id="date"></time></div>
-      <div class="reading" aria-live="polite"><span class="reading-number" id="level-number">1</span><span class="reading-copy"><strong id="level-name">Low</strong><span id="level-context">Normal conditions</span></span></div>
+      <div class="reading" aria-live="polite"><span class="reading-number" id="level-number">2</span><span class="reading-copy"><strong id="level-name">Moderate</strong><span id="level-context">A little more attention</span></span></div>
       <div class="gauge-wrap">
-        <svg id="gauge" viewBox="0 0 600 325" role="slider" tabindex="0" aria-label="Threat level" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1" aria-valuetext="Low" aria-describedby="gauge-help">
+        <svg id="gauge" viewBox="0 0 600 325" role="slider" tabindex="0" aria-label="Threat level" aria-valuemin="1" aria-valuemax="4" aria-valuenow="2" aria-valuetext="Moderate" aria-describedby="gauge-help">
           <defs><linearGradient id="scale-gradient" x1="0%" x2="100%"><stop offset="0%" stop-color="#d4d8df"/><stop offset="25%" stop-color="#b8bdc6"/><stop offset="50%" stop-color="#a2a8b1"/><stop offset="75%" stop-color="#878e99"/><stop offset="100%" stop-color="#737b87"/></linearGradient></defs>
           <path class="track" d="M75 275 A225 225 0 0 1 525 275"/>
           <path class="range" d="M75 275 A225 225 0 0 1 525 275"/>
@@ -79,8 +79,8 @@
       </div>
       <div class="hint" id="gauge-help"><span id="hint-text">Point at the gauge to preview a level. Click to set it.</span></div>
       <div class="scale-list" role="group" aria-label="Choose a threat level">
-        <button class="scale-button" type="button" data-level="1" aria-pressed="true">1 · Low</button>
-        <button class="scale-button" type="button" data-level="2" aria-pressed="false">2 · Moderate</button>
+        <button class="scale-button" type="button" data-level="1" aria-pressed="false">1 · Low</button>
+        <button class="scale-button" type="button" data-level="2" aria-pressed="true">2 · Moderate</button>
         <button class="scale-button" type="button" data-level="3" aria-pressed="false">3 · Elevated</button>
         <button class="scale-button" type="button" data-level="4" aria-pressed="false">4 · Imminent</button>
       </div>
@@ -99,7 +99,7 @@
       </ul>
     </section>
   </div>
-  <footer><span>Starts moderate when a selected U.S. holiday falls within the next seven days. Otherwise, starts low.</span><span>Local display · Manual setting · No live threat feed</span></footer>
+  <footer><span>Starts elevated when a selected U.S. holiday falls within the next seven days. Otherwise, starts moderate.</span><span>Local display · Manual setting · No live threat feed</span></footer>
 </main>
 <script>
   const labels = ['Low', 'Moderate', 'Elevated', 'Imminent'];
@@ -165,7 +165,7 @@
     text.setAttribute('x',number.x); text.setAttribute('y',number.y);
     text.setAttribute('class','number'); text.textContent = level; marks.appendChild(text);
   }
-  let selected = hasHolidayWithinWeek(date) ? 2 : 1;
+  let selected = hasHolidayWithinWeek(date) ? 3 : 2;
   let preview = null;
   function rotate(line, angle) { line.style.transform = `rotate(${90-angle}deg)`; }
   function levelAngle(level) { return 180 - (level - .5) * angleStep; }
