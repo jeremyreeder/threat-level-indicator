@@ -50,6 +50,9 @@
     .advice li { display:grid; grid-template-columns:15px 1fr; gap:11px; padding:13px 0; border-top:1px solid #3b4667; line-height:1.42; }
     .advice li::before { content:""; width:7px; height:7px; margin-top:8px; border-radius:50%; background:#8cf0d1; }
     footer { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; color:#aebbd5; font-size:.78rem; margin-top:18px; }
+    footer .copyright { flex-basis:100%; padding-top:12px; border-top:1px solid #3b4667; }
+    footer a { color:#8cf0d1; font-weight:750; }
+    footer a:focus-visible { outline:3px solid #ffe587; outline-offset:3px; }
     @media(max-width:760px) { .layout { grid-template-columns:1fr; } .advice { min-height:0; } }
     @media(max-width:460px) { main { width:min(100% - 22px, 1080px); } .gauge-panel { padding:18px 14px; } .scale-button { font-size:.72rem; } .date { font-size:.72rem; } }
     @media(prefers-reduced-motion:reduce) { .needle { transition:none; } }
@@ -98,7 +101,7 @@
       </ul>
     </section>
   </div>
-  <footer><span>Starts elevated when a U.S. holiday falls within the next seven days. Otherwise, starts moderate.</span><span>Local display · Manual setting · No live threat feed</span></footer>
+  <footer><span>Starts elevated when a U.S. holiday falls within the next seven days. Otherwise, starts moderate.</span><span>Local display · Manual setting · No live threat feed</span><span class="copyright">Copyright © 2026 <a href="https://gridscout.net">GridScout</a></span></footer>
 </main>
 <script>
   const labels = ['Low', 'Moderate', 'Elevated', 'Imminent'];
