@@ -84,8 +84,8 @@
       <div class="scale-list" role="group" aria-label="Choose a threat level">
         <button class="scale-button" type="button" data-level="1" aria-pressed="false">1 · Low</button>
         <button class="scale-button" type="button" data-level="2" aria-pressed="true">2 · Moderate</button>
-        <button class="scale-button" type="button" data-level="3" aria-pressed="false">3 · Elevated</button>
-        <button class="scale-button" type="button" data-level="4" aria-pressed="false">4 · Imminent</button>
+        <button class="scale-button" type="button" data-level="3" aria-pressed="false">3 · High</button>
+        <button class="scale-button" type="button" data-level="4" aria-pressed="false">4 · Extreme</button>
       </div>
     </section>
     <section class="panel advice" aria-labelledby="advice-heading">
@@ -101,10 +101,10 @@
       </ul>
     </section>
   </div>
-  <footer><span>Starts elevated when a U.S. holiday falls within the next seven days. Otherwise, starts moderate.</span><span>Local display · Manual setting · No live threat feed</span><span class="copyright">Copyright © 2026 <a href="https://www.gridscout.net">GridScout</a></span></footer>
+  <footer><span>Starts high when a U.S. holiday falls within the next seven days. Otherwise, starts moderate.</span><span>Local display · Manual setting · No live threat feed</span><span class="copyright">Copyright © 2026 <a href="https://www.gridscout.net">GridScout</a></span></footer>
 </main>
 <script>
-  const labels = ['Low', 'Moderate', 'Elevated', 'Imminent'];
+  const labels = ['Low', 'Moderate', 'High', 'Extreme'];
   const contexts = ['Normal conditions', 'A little more attention', 'Heightened attention', 'Immediate attention'];
   const angleStep = 180 / labels.length;
   const gauge = document.getElementById('gauge');
