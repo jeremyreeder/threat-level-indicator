@@ -112,9 +112,12 @@
   const ghost = document.getElementById('ghost');
   const marks = document.getElementById('marks');
   const hint = document.getElementById('hint-text');
-  const date = new Date();
-  document.getElementById('date').textContent = new Intl.DateTimeFormat(undefined, {weekday:'long', month:'long', day:'numeric', year:'numeric'}).format(date);
-  document.getElementById('date').dateTime = [date.getFullYear(), String(date.getMonth()+1).padStart(2,'0'), String(date.getDate()).padStart(2,'0')].join('-');
+  let date = new Date();
+  function showDate(today) {
+    document.getElementById('date').textContent = new Intl.DateTimeFormat(undefined, {weekday:'long', month:'long', day:'numeric', year:'numeric'}).format(today);
+    document.getElementById('date').dateTime = [today.getFullYear(), String(today.getMonth()+1).padStart(2,'0'), String(today.getDate()).padStart(2,'0')].join('-');
+  }
+  showDate(date);
 
   function nthWeekday(year, month, weekday, nth) {
     const first = new Date(year, month, 1).getDay();
@@ -226,6 +229,24 @@
     button.addEventListener('click', () => { selected = level; render(); });
   });
   render();
+  let midnightTimer;
+  function refreshDaily() {
+    const today = new Date();
+    if (!sameDay(date, today)) {
+      date = today;
+      showDate(today);
+      selected = initialLevel(today);
+      clearPreview();
+      render();
+    }
+    const nextMidnight = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+    clearTimeout(midnightTimer);
+    midnightTimer = setTimeout(refreshDaily, Math.max(1, nextMidnight - today));
+  }
+  document.addEventListener('visibilitychange', () => {
+    if (!document.hidden) refreshDaily();
+  });
+  refreshDaily();
 </script>
 </body>
 </html>
